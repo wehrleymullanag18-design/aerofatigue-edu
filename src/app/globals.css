@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --canvas: #f2f1ed;
+  --paper: #fcfcfa;
+  --aluminum: #dde1e6;
+  --ink: #141a22;
+  --muted: #606a76;
+  --line: #c8cdd3;
+  --line-dark: #8f98a3;
+  --aviation: #174a8b;
+  --aviation-pale: #e8eff8;
+  --hot: #e86f2a;
+  --cold: #2b8ca3;
+  --normal: #258260;
+  --warning: #d99b28;
+  --danger: #bd3434;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--canvas); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background-color: var(--canvas);
+  background-image:
+    linear-gradient(rgba(23, 74, 139, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 74, 139, .025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { color: inherit; }
+::selection { color: white; background: var(--aviation); }
+
+.shell { width: min(1540px, calc(100% - 48px)); margin: 0 auto; }
+.lab-shell { width: min(1720px, calc(100% - 32px)); margin: 0 auto; }
+.grid-noise {
+  background-image:
+    linear-gradient(rgba(23, 74, 139, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 74, 139, .045) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.panel {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 0 2px 8px rgba(20, 26, 34, .055);
+  border-radius: 8px;
+}
+.panel-soft {
+  border: 1px solid var(--line);
+  background: #f6f6f3;
+  border-radius: 6px;
+}
+.eyebrow,
+.section-label {
+  color: var(--aviation);
+  letter-spacing: .06em;
+  font-size: .78rem;
+  font-weight: 800;
+}
+.section-title {
+  font-size: clamp(1.9rem, 2.8vw, 2.9rem);
+  line-height: 1.16;
+  letter-spacing: -.025em;
+  font-weight: 850;
+}
+.muted { color: var(--muted); }
+.mono { font-family: Consolas, "SFMono-Regular", "Roboto Mono", monospace; }
+
+.lab-button,
+.control-button {
+  min-height: 42px;
+  border: 1px solid #9fa9b4;
+  border-radius: 6px;
+  background: #f8f8f5;
+  padding: 9px 13px;
+  text-align: left;
+  color: var(--ink);
+  font-weight: 750;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.lab-button:hover:not(:disabled),
+.control-button:hover:not(:disabled) {
+  border-color: var(--aviation);
+  background: var(--aviation-pale);
+  color: var(--aviation);
+}
+.lab-button:focus-visible,
+.control-button:focus-visible {
+  outline: 2px solid var(--aviation);
+  outline-offset: 2px;
+}
+.lab-button:disabled,
+.control-button:disabled { opacity: .42; cursor: not-allowed; }
+.primary-button {
+  border-color: var(--aviation);
+  background: var(--aviation);
+  color: white;
+}
+.primary-button:hover:not(:disabled) { background: #103d76; color: white; }
+.danger-button {
+  border-color: #8c2424;
+  background: var(--danger);
+  color: white;
+}
+.danger-button:hover:not(:disabled) { border-color: #741c1c; background: #a32929; color: white; }
+.tag,
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  padding: .32rem .58rem;
+  background: #f8f8f5;
+  color: #33404d;
+  font-size: .78rem;
+  font-weight: 750;
+}
+.sim-notice {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  border: 1px solid #d1b778;
+  border-left: 4px solid var(--warning);
+  background: #fff9e9;
+  color: #59471f;
+  padding: .68rem .85rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.hotspot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 50%;
+  background: var(--aviation);
+  box-shadow: 0 0 0 2px rgba(20, 26, 34, .45);
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+.hotspot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: white;
+}
+.hotspot:hover,
+.hotspot[aria-pressed="true"] { transform: translate(-50%, -50%) scale(1.18); background: var(--cold); }
+
+.blueprint-field {
+  background-color: #eef2f5;
+  background-image:
+    linear-gradient(rgba(23, 74, 139, .09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 74, 139, .09) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.instrument-panel {
+  color: #eef2f5;
+  border: 1px solid #2b3540;
+  border-radius: 8px;
+  background: #141a22;
+  box-shadow: 0 2px 8px rgba(20, 26, 34, .16);
+}
+.engineering-rule {
+  height: 6px;
+  border-top: 1px solid var(--line-dark);
+  background: repeating-linear-gradient(90deg, var(--line-dark) 0 1px, transparent 1px 20px);
+}
+.metric-value {
+  font-family: Consolas, "SFMono-Regular", "Roboto Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+}
+.task-code {
+  display: inline-block;
+  padding: .3rem .48rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 3px;
+  background: white;
+  color: var(--aviation);
+  font-family: Consolas, monospace;
+  font-size: .78rem;
+  font-weight: 800;
+}
+.presentation-stage {
+  min-height: calc(100vh - 64px);
+  background-color: var(--canvas);
+  background-image:
+    linear-gradient(rgba(23, 74, 139, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 74, 139, .035) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@keyframes equipment-travel {
+  0%, 100% { transform: translateX(-18px); }
+  50% { transform: translateX(22px); }
+}
+.motion-carriage { animation: equipment-travel 5s ease-in-out infinite; }
+.motion-paused { animation-play-state: paused; }
+.telemetry-range {
+  height: 18px;
+  accent-color: var(--aviation);
+  cursor: ew-resize;
+}
+.telemetry-range:disabled { cursor: not-allowed; opacity: .45; }
+
+@media (max-width: 900px) {
+  .shell { width: min(100% - 28px, 1540px); }
+  .lab-shell { width: min(100% - 20px, 1720px); }
+  .section-title { font-size: clamp(1.8rem, 8vw, 2.7rem); }
+}
+@media print {
+  body { background: white !important; color: #111 !important; }
+  header, .no-print, .sim-notice { display: none !important; }
+  .panel, .panel-soft { background: white !important; color: #111 !important; border-color: #cbd5e1 !important; box-shadow: none !important; }
+  .report-sheet { width: 210mm; min-height: 297mm; margin: 0; padding: 14mm; }
+}
